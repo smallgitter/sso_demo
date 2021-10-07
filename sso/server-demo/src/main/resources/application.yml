@@ -1,0 +1,24 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.sso.serverdemo.entity
+  mapperLocations: classpath:mapper/*.xml
+
+---
+
+#开发配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_sso
+    username: root
+    password: ldssql
+    driver-class-name: com.mysql.jdbc.Driver
+#  web:
+#    mvc:
+#      static-path-pattern: /**
+#    resources:
+#      static-locations: classpath:/

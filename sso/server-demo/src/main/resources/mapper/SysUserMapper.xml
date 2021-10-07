@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sso.serverdemo.dao.SysUserDao" >
+    <resultMap id="BaseResultMap" type="com.sso.serverdemo.entity.SysUser" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="userCode" property="userCode" jdbcType="VARCHAR" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="userPassword" property="userPassword" jdbcType="VARCHAR" />
+        <result column="realName" property="realName" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, userCode, userName, userPassword, realName
+    </sql>
+    <select id="getUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from sysuser
+        limit 1
+    </select>
+
+    <!--登录-->
+    <select id="login" resultType="com.sso.serverdemo.entity.SysUser">
+        SELECT * FROM sysuser WHERE userName=#{userName} AND userPassword=#{userPassword}
+    </select>
+</mapper>
